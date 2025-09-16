@@ -79,7 +79,12 @@ fatr_df =
   read_excel("data/LotR_Words.xlsx")
 ```
 
+read in a sas file.
 
+```{r}
+pulse_df = read_sas("data/public_pulse_data.sas7bdat")
+head(pulse_df, 5)
+```
 
 
 
