@@ -368,6 +368,8 @@ display: none;
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>library(readxl)
+library(haven)</code></pre>
 <p>import a dataset.</p>
 <pre class="r"><code>litters_df =
   read_csv(&quot;data/FAS_litters.csv&quot;)</code></pre>
@@ -612,6 +614,43 @@ display: none;
 ## Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ## • `3` -&gt; `3...6`
 ## • `3` -&gt; `3...8`</code></pre>
+</div>
+<div id="import-pups-data" class="section level2">
+<h2>Import pups data</h2>
+<pre class="r"><code>pups_df =
+  read_csv(
+    &quot;data/FAS_pups.csv&quot;,
+    skip = 3,
+    na = c(&quot;NA&quot;, &quot;.&quot;, &quot;&quot;)
+  )</code></pre>
+<pre><code>## Rows: 313 Columns: 6
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): Litter Number
+## dbl (5): Sex, PD ears, PD eyes, PD pivot, PD walk
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>pups_df =
+  janitor::clean_names(pups_df)</code></pre>
+</div>
+<div id="okay-what-about-excel" class="section level2">
+<h2>Okay what about excel</h2>
+<p>CSVs are really great but sometimes we have excel.</p>
+<pre class="r"><code>mlb_df =
+  read_excel(&quot;data/mlb11.xlsx&quot;)</code></pre>
+<p>Import LotR word counts.</p>
+<pre class="r"><code>fatr_df =
+  read_excel(&quot;data/LotR_Words.xlsx&quot;)</code></pre>
+<pre><code>## New names:
+## • `` -&gt; `...2`
+## • `` -&gt; `...3`
+## • `` -&gt; `...4`
+## • `` -&gt; `...6`
+## • `` -&gt; `...7`
+## • `` -&gt; `...8`
+## • `` -&gt; `...10`
+## • `` -&gt; `...11`</code></pre>
 </div>
 
 

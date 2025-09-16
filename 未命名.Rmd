@@ -7,6 +7,8 @@ output: html_document
 
 ```{r}
 library(tidyverse)
+library(readxl)
+library(haven)
 ```
 
 import a dataset.
@@ -47,8 +49,35 @@ litters_df =
   read_csv("data/FAS_litters.csv", na = c("NA", ".", ""), skip = 1)
 ```
 
+## Import pups data
 
+```{r}
+pups_df =
+  read_csv(
+    "data/FAS_pups.csv",
+    skip = 3,
+    na = c("NA", ".", "")
+  )
 
+pups_df =
+  janitor::clean_names(pups_df)
+```
+
+## Okay what about excel
+
+CSVs are really great but sometimes we have excel.
+
+```{r}
+mlb_df =
+  read_excel("data/mlb11.xlsx")
+```
+
+Import LotR word counts.
+
+```{r}
+fatr_df =
+  read_excel("data/LotR_Words.xlsx")
+```
 
 
 
