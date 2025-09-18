@@ -9,10 +9,72 @@ output: html_document
 library(tidyverse)
 ```
 
-import datasets.
+## import datasets.
 ```{r}
 litters_df =
   read_csv("data/FAS_litters.csv", na = c("NA", ".", ""))
 litters_df =
   janitor::clean_names(litters_df)
 ```
+
+## select
+
+Choose some cols and not others.
+
+```{r}
+select(litters_df, group, gd0_weight)
+```
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+```{r}
+select(litters_df, -litter_number)
+```
+
+Renaming cols
+
+```{r}
+select(litters_df, GROUP = group, LITTer_NUMBer = litter_number)
+```
+
+```{r}
+rename(litters_df, GROUP = group, LITTer_NUMBer = litter_number)
+```
+
+Select Helpers
+
+```{r}
+select(litters_df, starts_with("gd"))
+```
+
+```{r}
+select(litters_df, litter_number, everything())
+```
+
+```{r}
+relocate(litters_df, litter_number)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
