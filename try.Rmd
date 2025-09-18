@@ -1,0 +1,31 @@
+---
+title: "la"
+author: "Ziang Niu"
+date: "2025-09-18"
+output: html_document
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## load the pups data
+
+```{r}
+pups_df = 
+  read.csv("data/FAS_pups.csv", skip = 3, na = c("NA", ".", "")) %>%
+  janitor::clean_names() %>%
+  filter(sex == 1) %>%
+  select(-pd_ears) %>%
+  mutate(pd_pivot_ge7 = pd_pivot >= 7)
+```
+
+
+
+
+
+
+
+
+
+
