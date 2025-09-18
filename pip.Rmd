@@ -95,6 +95,58 @@ filter(litters_df, group == "Mod8")
 filter(litters_df, group %in% c("con7", "mod8"))
 ```
 
+# Mutate
+
+```{r}
+mutate(
+  litters_df, 
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group) ## lower case
+  )
+```
+
+## arrange
+
+```{r}
+arrange(litters_df, pups_born_alive)
+```
+
+## %>%
+
+```{r}
+litters_data_row = read_csv("data/FAS_litters.csv", na = c("NA", ".", ""))
+litters_clean_name = janitor::clean_names(litters_data_row)
+litters_data_selected = select(litters_clean_name, -pups_survive)
+litters_mutated = mutate(litters_data_selected, wt_gain = gd18_weight - gd0_weight)
+litters_without_missing = drop_na(litters_mutated, gd0_weight)
+```
+
+use pipe!
+
+```{r}
+litters_df =
+  read_csv("data/FAS_litters.csv", na = c("NA", ".", "")) %>%
+  janitor::clean_names() %>%
+  select(-pups_survive) %>%
+  mutate(wt_gain = gd18_weight - gd0_weight) %>%
+  drop_na(gd0_weight)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
