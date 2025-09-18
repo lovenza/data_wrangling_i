@@ -1,0 +1,18 @@
+---
+title: "Untitled"
+author: "Ziang Niu"
+date: "2025-09-18"
+output: html_document
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+import datasets.
+```{r}
+litters_df =
+  read_csv("data/FAS_litters.csv", na = c("NA", ".", ""))
+litters_df =
+  janitor::clean_names(litters_df)
+```
